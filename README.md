@@ -7,4 +7,4 @@ git clone https://github.com/Datakwiat/angularnodemsgboarddemo.git
 sudo apt install nodejs
 node -v
 npm install -g @angular/cli
-
+ng --version
