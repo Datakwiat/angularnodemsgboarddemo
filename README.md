@@ -8,3 +8,11 @@ sudo apt install nodejs
 node -v
 npm install -g @angular/cli
 ng --version
+
+Setup new angular app:
+$ ng new frontend
+? Would you like to add Angular routing? Yes
+? Which stylesheet format would you like to use? CSS
+
+Deploy:
+
