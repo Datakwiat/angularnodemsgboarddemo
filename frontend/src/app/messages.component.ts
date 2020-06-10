@@ -4,7 +4,7 @@ import { Component } from '@angular/core'
     selector: 'messages',
     template: `
         <div *ngFor="let message of messages">
-            {{message.text}} by {{message.owner}}
+            {{message.text}} by: {{message.owner}}
             <button mat-raised-button>Basic raised button</button>
         </div>
     `

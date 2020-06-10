@@ -14,5 +14,11 @@ $ ng new frontend
 ? Would you like to add Angular routing? Yes
 ? Which stylesheet format would you like to use? CSS
 
+Test:
+# in frontend dir
+npm install --save @angular/cdk
+# Visual Studio Code terminal
+ng serve -o
+
 Deploy:
 
