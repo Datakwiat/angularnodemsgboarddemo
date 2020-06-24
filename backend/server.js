@@ -6,8 +6,9 @@ var bodyParser = require('body-parser');
 
 var messages = [{text:'some text', owner: 'Bob'}, {text: 'more text', owner: 'Jane'}];
 
-// enables CORS
+// enable bodyParser middleware 
 app.use(bodyParser.json());
+// enables CORS custom middleware
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -17,6 +18,10 @@ app.use((req, res, next) => {
 // create generic route
 app.get('/messages', (req, res) => {
     res.json(messages);
+})
+
+app.post('/message', (req, res) => {
+    console.log(req.body);
 })
 
 app.listen(1234);

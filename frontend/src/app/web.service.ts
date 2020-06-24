@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-//import 'rxjs/add/operator/toPromise';
+//import 'rxjs/add/operator/toPromise'; //unable to resolve
 
 @Injectable()
 export class WebService {
@@ -9,5 +9,6 @@ export class WebService {
 
     getMessages() {
         return this.http.get('http://localhost:1234/messages').toPromise();
+        
     }
 }
