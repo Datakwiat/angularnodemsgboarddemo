@@ -15,14 +15,21 @@ app.use((req, res, next) => {
     next();
 })
 
+// use dedicated router for web apis
+var api = express.Router();
+
 // create generic route
-app.get('/messages', (req, res) => {
+api.get('/messages', (req, res) => {
     res.json(messages);
 })
 
-app.post('/message', (req, res) => {
-    console.log(req.body);
+// post route
+api.post('/messages', (req, res) => {
+    //console.log(req.body);
+    messages.push(req.body);
     res.sendStatus(200);
 })
+
+app.use('/api', api);
 
 app.listen(1234);
