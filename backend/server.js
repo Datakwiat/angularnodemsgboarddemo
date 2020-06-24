@@ -22,6 +22,7 @@ app.get('/messages', (req, res) => {
 
 app.post('/message', (req, res) => {
     console.log(req.body);
+    res.sendStatus(200);
 })
 
 app.listen(1234);
