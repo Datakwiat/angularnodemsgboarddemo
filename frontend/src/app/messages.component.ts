@@ -5,7 +5,7 @@ import { WebService } from './web.service'
     selector: 'messages',
     template: `
         <div *ngFor="let message of messages">
-        <mat-card style="margin:8px">
+        <mat-card class="card">
             <mat-card-title> {{message.owner}} </mat-card-title>
             <mat-card-content>
                 {{message.text}}
@@ -30,7 +30,7 @@ export class MessagesComponent {
         //     this.messages.push(response[index]);
         //     console.log("Message pushed: ", response[index]);
         // }
-        
+
         console.log("Messages from backend: ", this.messages);
         
     }
