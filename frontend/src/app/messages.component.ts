@@ -18,8 +18,21 @@ export class MessagesComponent {
     constructor(private webService : WebService) {}
 
     async ngOnInit(){
+        // Using await is a more elegant syntax of getting the promise result than promise.then, easier to read and write.
         var response = await this.webService.getMessages();
-        // this.messages = response.json(); //invalid object
+        //console.log(JSON.stringify(response));
+
+        //this.messages = response.json(); //invalid object without typescript casting
+        this.messages = response;
+
+        // extract promise object array entries and push to messages array
+        // for (let index = 0; index < response.length; index++){
+        //     this.messages.push(response[index]);
+        //     console.log("Message pushed: ", response[index]);
+        // }
+        
+        console.log("Messages from backend: ", this.messages);
+        
     }
 
     messages = [];
