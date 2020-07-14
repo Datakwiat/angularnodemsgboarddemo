@@ -5,11 +5,15 @@ import { WebService } from './web.service'
     selector: 'new-message',
     template: `
         <mat-card class="card">
-            <mat-card-content>
-            <mat-input-container>
-                <input matinput placeholder="Name">
-            </mat-input-container>
-            </mat-card-content>  
+        <mat-card-content>
+            <mat-form-field appearance="fill">
+                <input matInput placeholder="Name">
+            </mat-form-field>
+            
+            <mat-form-field appearance="fill">
+                <textarea matInput placeholder="Message"></textarea>
+            </mat-form-field>
+        </mat-card-content>
         </mat-card>
     `
 })
