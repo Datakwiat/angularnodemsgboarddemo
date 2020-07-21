@@ -8,6 +8,6 @@ body {
 
 .card {
     margin: 8px;
-    color: primary;
+    color: green;
     /* background-color: mat-color($mat-pink); */
 }

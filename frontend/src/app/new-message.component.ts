@@ -7,14 +7,14 @@ import { WebService } from './web.service'
         <mat-card class="card">
         <mat-card-content>
             <mat-form-field appearance="fill">
-                <input matInput placeholder="Name">
+                <input [(ngModel)]="owner" matInput placeholder="Name">
             </mat-form-field>
             
             <mat-form-field appearance="fill">
                 <textarea matInput placeholder="Message"></textarea>
             </mat-form-field>
             <mat-card-actions>
-                <button mat-button color="primary">POST</button>
+                <button (click)="post()" mat-button color="primary">POST</button>
             </mat-card-actions>
         </mat-card-content>
         </mat-card>
@@ -23,4 +23,9 @@ import { WebService } from './web.service'
 export class NewMessageComponent {
     constructor(private webService : WebService) {}
 
+    owner = "test";
+
+    post() {
+        console.log(this.owner);
+    }
 }
