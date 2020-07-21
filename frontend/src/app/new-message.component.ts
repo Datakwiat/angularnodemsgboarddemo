@@ -13,6 +13,9 @@ import { WebService } from './web.service'
             <mat-form-field appearance="fill">
                 <textarea matInput placeholder="Message"></textarea>
             </mat-form-field>
+            <mat-card-actions>
+                <button mat-button color="primary">POST</button>
+            </mat-card-actions>
         </mat-card-content>
         </mat-card>
     `
