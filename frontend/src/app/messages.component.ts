@@ -25,12 +25,6 @@ export class MessagesComponent {
         //this.messages = response.json(); //invalid object without typescript casting
         this.messages = response;
 
-        // extract promise object array entries and push to messages array
-        // for (let index = 0; index < response.length; index++){
-        //     this.messages.push(response[index]);
-        //     console.log("Message pushed: ", response[index]);
-        // }
-
         console.log("Messages from backend: ", this.messages);
         
     }
