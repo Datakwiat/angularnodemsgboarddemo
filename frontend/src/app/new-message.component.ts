@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core'
+import { Component } from '@angular/core'
 import { WebService } from './web.service'
 
 @Component({
@@ -22,9 +22,6 @@ import { WebService } from './web.service'
 })
 export class NewMessageComponent {
 
-    // output property 
-    @Output() onPosted = new EventEmitter();
-
     constructor(private webService : WebService) {}
 
     message = {
@@ -32,10 +29,10 @@ export class NewMessageComponent {
         text: ""
     }
 
-    async post() {
-        await this.webService.postMessage(this.message);
-        
-        // call event when a new message is posted
-        this.onPosted.emit(this.message);
+    post() {
+        this.webService.postMessage(this.message);
+
+        console.log("Posting message: ", this.message);
+
     }
 }

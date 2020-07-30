@@ -7,19 +7,26 @@ import { Injectable } from '@angular/core';
 export class WebService {
     URI = 'http://localhost:1234/api/messages';
 
-    constructor(private http: HttpClient) {}
+    messages = [];
 
-    getMessages() {
+    constructor(private http: HttpClient) {
+      this.getMessages();
+    }
+
+    async getMessages() {
         // TypeScript casting to array is required to extract the object returned
-        return this.http.get<Array<any>>(this.URI).toPromise();
+        var response = await this.http.get<Array<any>>(this.URI).toPromise();
+        this.messages = response;
+        console.log("Got messages from backend: ", this.messages);
     }
 
     // Take input of message object
-    postMessage(message) {
-        return this.http.post(this.URI, message, {responseType: 'text'})
+    async postMessage(message) {
+        var response = await this.http.post(this.URI, message)
         .pipe(catchError(this.handleError))
         .toPromise()
         ;
+        this.messages.push(response);
     } 
 
     handleError(error: HttpErrorResponse) {
