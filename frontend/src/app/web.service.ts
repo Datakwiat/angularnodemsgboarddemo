@@ -1,6 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -16,37 +14,30 @@ export class WebService {
 
     async getMessages() {
         try {
-          // TypeScript casting to array is required to extract the object returned
-          var response = await this.http.get<Array<any>>(this.URI).toPromise();
-          this.messages = response;
-          console.log("Got messages from backend: ", this.messages);
+            // TypeScript casting to array is required to extract the object returned
+            var response = await this.http.get<Array<any>>(this.URI).toPromise();
+            this.messages = response;
+            console.log("Got messages from backend: ", this.messages);
         } catch (error) {
-          console.error("Unable to get messages");
-          this.sb.open("Unable to get messages", 'close', {duration: 2000});
+            this.handleError("Unable to get messages");
         }
         
     }
 
     // Take input of message object
     async postMessage(message) {
-        var response = await this.http.post(this.URI, message)
-        .pipe(catchError(this.handleError))
-        .toPromise()
-        ;
-        this.messages.push(response);
-    } 
-
-    handleError(error: HttpErrorResponse) {
-        let errorMessage = 'Unknown error!';
-        if (error.error instanceof ErrorEvent) {
-          // Client-side errors
-          errorMessage = `Error: ${error.error.message}`;
-        } else {
-          // Server-side errors
-          errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-        }
-        window.alert(errorMessage);
-        return throwError(errorMessage);
+      try {
+          var response = await this.http.post(this.URI, message).toPromise();
+          this.messages.push(response);
+      } catch (error) {
+          this.handleError("Unable to post message");
       }
+        
+    }
+
+    private handleError(error) {
+      console.error(error);
+      this.sb.open(error, 'close', {duration: 2000});
+    }
     
 }
